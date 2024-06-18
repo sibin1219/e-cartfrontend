@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-6">
+        <img width="700px" src="https://cdn.dribbble.com/users/751212/screenshots/2510592/media/885bb6c1cd2e2cc207a69e8b96cf9504.gif" alt="">
+    </div>
+    <div class="col-6">
+        <h6 class="text-center m-5">Register Here</h6>
+            <div [formGroup]="registerForm" id="lgdiv" class="  text-center"  style="width: 400px;"> <form  action="">
+                <div  id="main">
+                <input formControlName="username"  class="form-control m-1" type="text" placeholder="UserName" username> <br>
+                <div *ngIf="this.registerForm.get('username')?.errors && this.registerForm.get('username')?.touched" class="text-danger fw-bolder">Invalid Username</div>
+                <input  formControlName="email"  class="form-control m-1" type="text" placeholder="Email" email> <br>
+                <div *ngIf="this.registerForm.get('email')?.errors && this.registerForm.get('email')?.touched" class="text-danger fw-bolder">Invalid email</div>
+                <input formControlName="password" class="form-control m-1" type="password" placeholder="Password" > <br>
+                <div *ngIf="this.registerForm.get('password')?.errors && this.registerForm.get('password')?.touched" class="text-danger fw-bolder">Invalid password</div>
+                <button (click)="register()" class="btn btn-primary text-center">Register</button> <br> <br>
+                <p>Already Registered.. <a routerLink="/user/login">Login</a></p>
+            </div>
+           
+            </form></div>
+    
+        
+        
+       
+    </div>
+    
+    </div>

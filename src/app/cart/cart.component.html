@@ -1,0 +1,94 @@
+<div class="row"> 
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+              <tr >
+                
+                <th scope="col">Id</th>
+                <th scope="col">Item</th><br>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                
+                <th scope="row"> {{product.id}}</th>
+                <td>{{product.title}}</td>
+                <td><img width="100px" [src]=product.image  alt=""></td>
+                <td>{{product.price}}</td>
+                <td>
+                    <div class="d-flex">
+                        <button (click)="incrementProduct(product.id)" class="btn">+</button>
+                        <input [value]="product.quantity" class="form-control" style="max-width: 40px;" type="text" readonly>
+                        <button (click)="decrementProduct(product.id)" class="btn">-</button>
+                    </div>
+                </td>
+                <td>
+                    <button (click)="deleteCartProduct(product.id)" class="btn"> <img style="border-radius: 10px;" width="55px" src="https://images.squarespace-cdn.com/content/v1/51abe1dae4b08f6a770bf7d0/1569943355220-16CIDPEPYIKJX10EW2ZC/ke17ZwdGBToddI8pDm48kLxnK526YWAH1qleWz-y7AFZw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVH-2yKxPTYak0SCdSGNKw8A2bnS_B4YtvNSBisDMT-TGt1lH3P2bFZvTItROhWrBJ0/delete.gif" alt=""></button>
+                </td>
+              </tr>
+             
+            </tbody>
+          </table>
+    </div>
+<div class="col-md-4">
+    <!-- cart summary -->
+    <div class="card shadow m-5 p-5">
+        <h3 class="text-center">Cart Summary</h3>
+        <div class="text-center">Total Price: {{totalPrice}}</div>
+        <div class="text-center" > 
+
+          <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Checkout
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Payment</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control mb-3" placeholder="Name">
+        <input type="text" class="form-control mb-3"  placeholder="Address">
+        <input type="text" class="form-control mb-3"  placeholder="Phone no">
+        <p>Total Price: {{totalPrice}}</p>
+        <div class="text-center">    <button (click)="payment()" type="button" class="btn btn-success">Payment</button>
+         
+        <div *ngIf="paymentStatus"> <ngx-paypal [config]="payPalConfig"></ngx-paypal></div>
+        </div>
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+</div>
+<!-- without product -->
+<div class="text-center" *ngIf="products.length==0">
+    <h2>CART</h2>
+    <img src="https://i.pinimg.com/originals/59/2e/df/592edf1f0c95a7621ea0a839a0db1285.gif" alt="">
+<h5>The Cart is Empty!!</h5>
+<button class="btn btn-primary m-5">Add Items</button>
+
+</div>
+

@@ -1,0 +1,13 @@
+#lgdiv{
+  
+    margin-left: 90px;
+    margin-top: 90px;
+ }
+ #main{
+     padding: 20px;
+     height: 350px;
+     width: 500px;
+     border: 1px solid rgba(0, 0, 0, 0.501);
+     border-radius: 20px;
+     margin: 20px;
+ }
